@@ -19,7 +19,10 @@ public class ProducerConsumerWithProcessor {
                         .process(new Processor() {
                             @Override
                             public void process(Exchange exchange) throws Exception {
-                                System.out.println("Hello from the processor");
+                                // System.out.println("Hello from the processor");
+                                String msg = exchange.getIn().getBody(String.class);
+                                msg += " - Processed by processor";
+                                exchange.getOut().setBody(msg);
                             }
                         })
                         .to("seda:end");
