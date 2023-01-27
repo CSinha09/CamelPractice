@@ -32,7 +32,7 @@ public class ProducerRMQ {
         context.start();
 
         ProducerTemplate producerTemplate = context.createProducerTemplate();
-        producerTemplate.sendBody("direct:start", new Date());
+        producerTemplate.sendBody("direct:start", "Hello from the producer");
 
     }
 
